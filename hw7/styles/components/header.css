@@ -1,0 +1,138 @@
+.header {
+  background-color: #2d313d;
+  padding: 10px 0px;
+}
+
+.header .container {
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 10px;
+}
+
+.header__logo,
+.header__logo img {
+  width: 32px;
+  height: 20px;
+}
+
+.header__burger {
+  display: none;
+}
+
+.header a {
+  text-decoration: none;
+  color: #727989;
+}
+
+.header__city {
+  border-bottom: 1px dashed #727989;
+}
+
+.header i {
+  color: #727989;
+  padding-left: 20px;
+}
+
+.profile__user a,
+.profile__user img {
+  padding-left: 20px;
+}
+
+.header__profile,
+.profile__user {
+  display: flex;
+  align-items: center;
+}
+
+.navi {
+  background-color: #646d81;
+  padding: 10px;
+}
+
+.navi a {
+  text-decoration: none;
+  color: white;
+  border-bottom: 2px solid transparent;
+}
+
+.navi a:not(:last-child) {
+  margin-right: 20px;
+}
+
+@media (max-width: 612px) {
+  .header {
+    position: fixed;
+    width: 100%;
+    z-index: 3;
+  }
+
+  .header__logo {
+    display: none;
+  }
+  .navi .container {
+    justify-content: center;
+  }
+
+  .header__burger {
+    display: block;
+    position: relative;
+    width: 25px;
+    height: 14px;
+  }
+
+  .header__burger span {
+    position: absolute;
+    background-color: #727989;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    top: 6px;
+    transition: all 0.3s ease 0s;
+  }
+
+  .header__burger::before,
+  .header__burger::after {
+    content: '';
+    background-color: #727989;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    left: 0;
+    transition: all 0.3s ease 0s;
+  }
+
+  .header__burger::before {
+    top: 0;
+  }
+
+  .header__burger::after {
+    bottom: 0;
+  }
+
+  .navi {
+    position: fixed;
+    width: 97%;
+    height: 20px;
+    z-index: 2;
+    top: -100%;
+    transition: all 0.3s ease 0s;
+  }
+
+  .navi.active {
+    top: 50px;
+  }
+
+  .header__burger.active span {
+    transform: scale(0);
+  }
+
+  .header__burger.active::before {
+    transform: rotate(45deg);
+    top: 6px;
+  }
+
+  .header__burger.active::after {
+    transform: rotate(-45deg);
+    bottom: 6px;
+  }
+}

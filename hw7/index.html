@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="styles/Normalize.css" />
+    <link rel="stylesheet" href="styles/stelesheets.css" />
+    <link rel="stylesheet" href="styles/components/header.css" />
+    <link rel="stylesheet" href="styles/components/main.css" />
+    <link rel="stylesheet" href="styles/components/footer.css" />
+    <link rel="stylesheet" href="styles/anim.css" />
+    <title>hw7</title>
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="header__logo">
+          <img src="img/logo.png" alt="logo" />
+        </div>
+        <div class="header__burger"><span></span></div>
+        <div class="header__profile">
+          <a href="#" class="header__city">New york</a>
+          <i class="fa fa-angle-down"></i>
+          <i class="fa fa-bell"></i>
+          <i class="fa fa-envelope"></i>
+          <div class="profile__user">
+            <a href="#">User Name</a>
+            <img src="img/userPhoto.jpg" alt="userPhoto" />
+          </div>
+          <i class="fa fa-search" onclick="slideMin()"></i>
+        </div>
+      </div>
+    </header>
+    <div class="navi">
+      <div class="container">
+        <a href="#">Menu Item</a>
+        <a href="#">Menu Item</a>
+        <a href="#">Menu Item</a>
+        <a href="#">Menu Item</a>
+        <a href="#">Menu Item</a>
+      </div>
+    </div>
+    <main class="main">
+      <div class="container">
+        <menu class="main__menu">
+          <li><a href="#">Submenu item 7d</a></li>
+          <li><a href="#">Submenu item 5d</a></li>
+          <li class="menu__submenu">Submenu</li>
+          <li><a href="#">Submenu item 7d</a></li>
+          <li><a href="#">Submenu item 2d</a></li>
+          <li><a href="#">Submenu item 4d</a></li>
+          <li><a href="#">More tags</a></li>
+          <li class="menu__submenu">Submenu</li>
+          <li><a href="#">Submenu item 1d</a></li>
+          <li><a href="#">Submenu item 1d</a></li>
+          <li class="menu__submenu">Submenu</li>
+          <li><a href="#">Submenu item 4d</a></li>
+          <li><a href="#">Submenu item 2d</a></li>
+          <li><a href="#">Submenu item1 &amp; Submenu item2 2d</a></li>
+          <li><a href="#">Submenu item 7d</a></li>
+          <li><a href="#">Submenu item 1d</a></li>
+          <li><a href="#">Submenu item 1d</a></li>
+          <li class="menu__submenu">Submenu</li>
+          <li><a href="#">Submenu item 2d</a></li>
+          <li><a href="#">Submenu item 1d</a></li>
+          <li><a href="#">Submenu item 3d</a></li>
+        </menu>
+        <div class="main__wrapper">
+          <h1>
+            Page title in <span>New York </span><i class="fa fa-angle-down"></i>
+          </h1>
+          <div class="content">
+            <div class="content__post">
+              <div class="post__image">
+                <img src="img/photo1.jpg" />
+              </div>
+              <div class="post__row">
+                <div class="post__info">
+                  <span class="post__user-name">User name</span>
+                  <span class="post__User_status">Pro</span>
+                  <span class="post__comments">
+                    <i class="fa fa-comments"></i><span> 2 </span>
+                    <i class="fa fa-clock-o"></i> 20m</span
+                  >
+                </div>
+                <h2 class="post__title">Item title 1</h2>
+                <p class="post__text">
+                  Suspendisse potenti. Duis imperdiet ex non leo condimentum
+                  efficitur. Sed rhoncus eleifend lacus sit amet faucibus. Nunc
+                  semper nisl a dolor pretium dapibus quis quis lacus. Nulla
+                  faucibus viverra laoreet. Fusce in scelerisque magna. Duis
+                  porta erat vitae lectus lacinia tempus.
+                </p>
+                <span class="post__tags"
+                  ><i class="fa fa-tag"></i> tag1, tag2, tag3</span
+                >
+              </div>
+            </div>
+            <div class="content__post">
+              <div class="post__image">
+                <img src="img/photo2.jpg" />
+              </div>
+              <div class="post__row">
+                <div class="post__info">
+                  <span class="post__user-name">User name</span>
+                  <span class="post__User_status">Pro</span>
+                  <span class="post__comments">
+                    <i class="fa fa-comments"></i><span> 2 </span>
+                    <i class="fa fa-clock-o"></i> 20m</span
+                  >
+                </div>
+                <h2 class="post__title">Item title 1</h2>
+                <p class="post__text">
+                  Suspendisse potenti. Duis imperdiet ex non leo condimentum
+                  efficitur. Sed rhoncus eleifend lacus sit amet faucibus. Nunc
+                  semper nisl a dolor pretium dapibus quis quis lacus. Nulla
+                  faucibus viverra laoreet. Fusce in scelerisque magna. Duis
+                  porta erat vitae lectus lacinia tempus.
+                </p>
+                <span class="post__tags"
+                  ><i class="fa fa-tag"></i> tag1, tag2, tag3</span
+                >
+              </div>
+            </div>
+            <div class="content__post">
+              <div class="post__image">
+                <img src="img/photo3.jpg" />
+              </div>
+              <div class="post__row">
+                <div class="post__info">
+                  <span class="post__user-name">User name</span>
+                  <span class="post__User_status">Pro</span>
+                  <span class="post__comments">
+                    <i class="fa fa-comments"></i><span> 2 </span>
+                    <i class="fa fa-clock-o"></i> 20m</span
+                  >
+                </div>
+                <h2 class="post__title">Item title 1</h2>
+                <p class="post__text">
+                  Suspendisse potenti. Duis imperdiet ex non leo condimentum
+                  efficitur. Sed rhoncus eleifend lacus sit amet faucibus. Nunc
+                  semper nisl a dolor pretium dapibus quis quis lacus. Nulla
+                  faucibus viverra laoreet. Fusce in scelerisque magna. Duis
+                  porta erat vitae lectus lacinia tempus.
+                </p>
+                <span class="post__tags"
+                  ><i class="fa fa-tag"></i> tag1, tag2, tag3</span
+                >
+              </div>
+            </div>
+            <div class="content__post">
+              <div class="post__image">
+                <img src="img/photo4.jpg" />
+              </div>
+              <div class="post__row">
+                <div class="post__info">
+                  <span class="post__user-name">User name</span>
+                  <span class="post__User_status">Pro</span>
+                  <span class="post__comments">
+                    <i class="fa fa-comments"></i><span> 2 </span>
+                    <i class="fa fa-clock-o"></i> 20m</span
+                  >
+                </div>
+                <h2 class="post__title">Item title 1</h2>
+                <p class="post__text">
+                  Suspendisse potenti. Duis imperdiet ex non leo condimentum
+                  efficitur. Sed rhoncus eleifend lacus sit amet faucibus. Nunc
+                  semper nisl a dolor pretium dapibus quis quis lacus. Nulla
+                  faucibus viverra laoreet. Fusce in scelerisque magna. Duis
+                  porta erat vitae lectus lacinia tempus.
+                </p>
+                <span class="post__tags"
+                  ><i class="fa fa-tag"></i> tag1, tag2, tag3</span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="content__buttons">
+            <a href="#"><i class="fa fa-angle-left"></i>Previous</a>
+            <a href="#">Next<i class="fa fa-angle-right"></i></a>
+          </div>
+          <footer class="footer">
+            <nav class="footer__info">
+              <a href="#">About</a>
+              <a href="#">Policies</a>
+              <a href="#">Site map</a>
+              <a href="#">Help</a>
+              <a href="#">Contact us</a>
+            </nav>
+
+            <div class="footer__copy">
+              <img src="img/logo-min.png" />
+              <span>© 2015. Qulix Systems. All rights reserved.</span>
+            </div>
+          </footer>
+        </div>
+      </div>
+    </main>
+    <script src="script/jQuery.js"></script>
+    <script src="script/script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,19 @@
+.footer {
+  font-size: 12px;
+  color: #99a1b3;
+}
+
+.footer__info {
+  background-color: #f2f4f8;
+  padding: 10px 30px;
+}
+
+.footer__info a {
+  margin-right: 18px;
+  color: #99a1b3;
+}
+
+.footer__copy {
+  background-color: #f2f4f8;
+  padding: 14px 30px;
+}

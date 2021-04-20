@@ -1,0 +1,13 @@
+.navi a:hover {
+  border-bottom: 2px solid #f2f4f8;
+}
+
+.main__menu li:hover {
+  background-color: #f2f4f8;
+  transition: 0.3s ease;
+}
+
+.content__buttons a:hover {
+  background-color: #f2f4f8;
+  transition: 0.5s ease;
+}
