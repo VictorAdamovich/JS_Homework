@@ -1,12 +1,12 @@
 .header {
   background-color: #2d313d;
-  padding: 10px 0px;
+  padding: 10px 0;
 }
 
 .header .container {
   justify-content: space-between;
   align-items: center;
-  padding: 0px 10px;
+  padding: 0 10px;
 }
 
 .header__logo,

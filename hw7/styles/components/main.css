@@ -33,7 +33,7 @@ h1 {
   font-size: 30px;
   font-family: Georgia, serif;
   font-weight: normal;
-  padding: 0px 30px;
+  padding: 0 30px;
 }
 
 h1 span {
@@ -90,7 +90,7 @@ h1 span {
 }
 
 .content__buttons {
-  margin: 30px 0px;
+  margin: 30px 0;
   text-align: center;
 }
 
@@ -114,5 +114,6 @@ h1 span {
 
   h1 {
     text-align: center;
+    margin-top: 70px;
   }
 }
