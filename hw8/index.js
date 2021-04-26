@@ -25,6 +25,7 @@ function Animal(name) {
 
 function Cat(name) {
   Animal.apply(this, arguments);
+
   this.stroke = function () {
     console.log('Гладим кота');
     return this;
@@ -37,6 +38,7 @@ function Cat(name) {
     satisfied();
     return this;
   };
+
   function satisfied() {
     console.log(' Кот доволен ^_^');
   }
