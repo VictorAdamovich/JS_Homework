@@ -55,6 +55,7 @@ function countSentencesLetters(text) {
 countSentencesLetters('Привет, студент! Студент... Как дела, студент?');
 
 //Задание 5
+// Попытки решить 5 задание
 function moreWord(text) {
     var arr = text.toLowerCase().replace(/[^a-zа-яё]/gi, ' ').split(' ');
 
