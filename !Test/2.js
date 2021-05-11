@@ -48,3 +48,37 @@ var vasya = new Employee('Вася', 20, 2000);
 
 console.log(vasya.name);
 console.log(vasya.showInfo());
+
+// Задание 2
+
+function Person(name, personAge) {
+    this.name = name;
+    this._personAge = personAge;
+}
+
+Person.prototype._getFormattedAge = function () {
+    return this._personAge + ' лет';
+};
+
+Person.prototype.showInfo = function () {
+    console.log('Привет, меня зовут ' + this.name + ', мне ' + this._getFormattedAge() + '.');
+};
+
+function Employee(name, personAge, salary) {
+    Person.apply(this, arguments);
+    this.salary = salary;
+}
+
+Employee.prototype = Object.create(Person.prototype);
+Employee.prototype.constructor = Employee;
+
+Employee.prototype.showInfo = function () {
+    Person.prototype.showInfo.apply(this, arguments);
+
+    console.log('Моя зарплата ' + this.salary + '$.');
+};
+
+var vasya = new Employee('Вася', 20, 2000);
+
+console.log(vasya.name);
+console.log(vasya.showInfo());
