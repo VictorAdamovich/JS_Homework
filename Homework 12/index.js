@@ -55,3 +55,21 @@ function countSentencesLetters(text) {
 countSentencesLetters('Привет, студент! Студент... Как дела, студент?');
 
 //Задание 5
+function moreWord(text) {
+    var arr = text.toLowerCase().replace(/[^a-zа-яё]/gi, ' ').split(' ');
+
+    var count = 0
+
+    for (var w of arr) {
+        for (var b of arr) {
+            if (w == b) {
+                count++
+            }
+            else{
+                
+            }
+        }
+    }
+}
+
+moreWord('Енот енот, кот!  кот  кот! заяц тюфяк гриб');
