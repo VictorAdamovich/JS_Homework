@@ -14,44 +14,42 @@ row.prepend(td3);
 tbody.prepend(row);
 });
 */
-// Второй вариант добавления (Почему то работает криво, но красивый) )
+// Второй вариант добавления (Почему то работает то нет , но красивый) )
 
 add.addEventListener('click', function addRow2() {
-    var tbody = document.getElementById('tbody');
-    tbody.insertAdjacentHTML(
-        'afterbegin',
-        '<tr><td></td><td></td><td></td></tr>'
-    );
+  var tbody = document.getElementById('tbody');
+  tbody.insertAdjacentHTML(
+    'afterbegin',
+    '<tr><td></td><td></td><td></td></tr>'
+  );
 });
 
-// Работа с input
+// Работа с input (Слепил)
 var td = document.querySelectorAll('td');
 
 for (var i = 0; ; i++) {
-    if (i !== td.length - 1) {
-        td[i].addEventListener('click', function addInput() {
-            var input = document.createElement('input');
-            input.value = this.innerHTML;
-            this.innerHTML = '';
-            this.appendChild(input);
-            input.focus();
+  if (i !== td.length - 1) {
+    td[i].addEventListener('click', function addInput() {
+      var input = document.createElement('input');
+      input.value = this.innerHTML;
+      this.innerHTML = '';
+      this.appendChild(input);
+      input.focus();
 
-            var self = this;
-            input.addEventListener('blur', function delInput() {
-                self.innerHTML = this.value;
-                self.addEventListener('click', addInput);
-            });
+      var self = this;
+      input.addEventListener('blur', function delInput() {
+        self.innerHTML = this.value;
+        self.addEventListener('click', addInput);
+      });
 
-            document
-                .querySelector('input')
-                .addEventListener('keydown', function (event) {
-                    if (event.code == 'Enter') {
-                        self.innerHTML = this.value;
-                        self.addEventListener('click', addInput);
-                    }
-                });
+      document.querySelector('input').addEventListener('keydown', function (e) {
+        if (e.code == 'Enter') {
+          self.innerHTML = this.value;
+          self.addEventListener('click', addInput);
+        }
+      });
 
-            this.removeEventListener('click', addInput);
-        });
-    }
+      this.removeEventListener('click', addInput);
+    });
+  }
 }
