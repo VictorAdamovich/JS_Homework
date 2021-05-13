@@ -24,24 +24,25 @@ add.addEventListener('click', function addRow2() {
   );
 });
 
-// Работа с input (Слепил)
+// Работа с input
 var td = document.querySelectorAll('td');
 
 for (var i = 0; ; i++) {
   if (i !== td.length - 1) {
     td[i].addEventListener('click', function addInput() {
+      // Фокус
       var input = document.createElement('input');
       input.value = this.innerHTML;
       this.innerHTML = '';
       this.appendChild(input);
       input.focus();
-
+      //Блюр
       var self = this;
       input.addEventListener('blur', function delInput() {
         self.innerHTML = this.value;
         self.addEventListener('click', addInput);
       });
-
+      // Закритие при Enter
       document.querySelector('input').addEventListener('keydown', function (e) {
         if (e.code == 'Enter') {
           self.innerHTML = this.value;
