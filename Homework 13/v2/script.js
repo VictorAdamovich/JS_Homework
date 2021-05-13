@@ -1,51 +1,57 @@
 // Добавление блоков
-var add = document.getElementById('add'),
-    block = document.getElementsByTagName('td'),
-    input = document.getElementsByClassName('hide');
+/*var add = document.getElementById('add');
 
 add.addEventListener('click', function addRow(id) {
-    //Даже не знаю как сделать более красиво ((
-    var tbody = document.getElementById('tbody'),
-        row = document.createElement('tr'),
-        td1 = document.createElement('td'),
-        td2 = document.createElement('td'),
-        td3 = document.createElement('td');
+var tbody = document.getElementById('tbody'),
+row = document.createElement('tr'),
+td1 = document.createElement('td'),
+td2 = document.createElement('td'),
+td3 = document.createElement('td');
 
-    row.prepend(td1);
-    row.prepend(td2);
-    row.prepend(td3);
-    tbody.prepend(row);
+row.prepend(td1);
+row.prepend(td2);
+row.prepend(td3);
+tbody.prepend(row);
+});
+*/
+// Второй вариант добавления (Почему то работает криво, но красивый) )
+
+add.addEventListener('click', function addRow2() {
+    var tbody = document.getElementById('tbody');
+    tbody.insertAdjacentHTML(
+        'afterbegin',
+        '<tr><td></td><td></td><td></td></tr>'
+    );
 });
 
 // Работа с input
+var td = document.querySelectorAll('td');
 
-function newInput(e, item, active) {
-    if (e.addEventListener)
-        e.addEventListener(item, active);
-    else
-        e.attachEvent(item, active);
+for (var i = 0; ; i++) {
+    if (i !== td.length - 1) {
+        td[i].addEventListener('click', function addInput() {
+            var input = document.createElement('input');
+            input.value = this.innerHTML;
+            this.innerHTML = '';
+            this.appendChild(input);
+            input.focus();
+
+            var self = this;
+            input.addEventListener('blur', function delInput() {
+                self.innerHTML = this.value;
+                self.addEventListener('click', addInput);
+            });
+
+            document
+                .querySelector('input')
+                .addEventListener('keydown', function (event) {
+                    if (event.code == 'Enter') {
+                        self.innerHTML = this.value;
+                        self.addEventListener('click', addInput);
+                    }
+                });
+
+            this.removeEventListener('click', addInput);
+        });
+    }
 }
-
-var mainBlock = document.getElementById('tbody');
-
-newInput(mainBlock, 'mouseup', function (e) {
-    if (e.target.tagName.toLowerCase() == 'td') {
-        input.value = block.textContent;
-        e.target.appendChild(input);
-        input.classList.remove('hide');
-        input.focus();
-    }
-});
-
-input.addEventListener('blur', function (e) {
-    e.target.parentElement.textContent = input.value;
-    input.classList.add('hide');
-    document.body.appendChild(input);
-    console.log(e.target);
-});
-
-document.addEventListener('keypress', function(e) {
-    if(e.key == 'Enter') {
-        input.classList.add('hidden');
-    }
-});
