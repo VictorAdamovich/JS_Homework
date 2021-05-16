@@ -15,6 +15,8 @@ document.getElementById('myTable')
                 var input = document.createElement('input');
                 event.target.appendChild(input);
                 input.value = event.target.textContent;
+                event.target.textContent = '';
+                event.target.appendChild(input);
                 input.focus();
 
                 //Блюр
