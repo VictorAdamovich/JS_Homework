@@ -1,5 +1,43 @@
+var add = document.getElementById('add');
+
+add.addEventListener('click', function addRow2() {
+    var tbody = document.getElementById('tbody');
+    tbody.insertAdjacentHTML(
+        'afterbegin',
+        '<tr><td></td><td></td><td></td></tr>'
+    );
+});
+
+var input;
+
+document.getElementById('myTable')
+    .addEventListener('click', function (event) {
+            if (event.target.tagName == 'TD' && event.target.className !== 'addBlock') {
+                // Фокус
+                var input = document.createElement('input');
+                event.target.appendChild(input);
+                input.value = event.target.textContent;
+                input.focus();
+
+                //Блюр
+                input.addEventListener('blur', function delInput() {
+                    event.target.textContent = this.value;
+                });
+
+                // Enter
+                document.querySelector('input').addEventListener('keydown', function (e) {
+                    if (e.code == 'Enter') {
+                        event.target.textContent = this.value;
+                    }
+                });
+            }
+        }
+    );
+
+
+/* Старая версия )
 // Добавление блоков
-/*var add = document.getElementById('add');
+var add = document.getElementById('add');
 
 add.addEventListener('click', function addRow(id) {
 var tbody = document.getElementById('tbody'),
@@ -13,52 +51,11 @@ row.prepend(td2);
 row.prepend(td3);
 tbody.prepend(row);
 });
-*/
+
+
 // Второй вариант добавления (Почему то работает то нет , но красивый) )
-var add = document.getElementById('add');
-
-add.addEventListener('click', function addRow2() {
-    var tbody = document.getElementById('tbody');
-    tbody.insertAdjacentHTML(
-        'afterbegin',
-        '<tr><td></td><td></td><td></td></tr>'
-    );
-});
-
-
-var input;
-document.getElementById('myTable')
-    .addEventListener('click', function (event) {
-            if (event.target.tagName == 'TD' && event.target.className !== 'addBlock') {
-                // Фокус
-                var input = document.createElement('input');
-                event.target.appendChild(input);
-                input.value = event.target.textContent;
-                input.focus();
-
-                //Блюр
-                input.addEventListener('blur', function delInput() {
-                    event.target.textContent = this.value;
-
-                });
-
-
-                document.querySelector('input').addEventListener('keydown', function (e) {
-                    if (e.code == 'Enter') {
-                        event.target.textContent = this.value;
-                    }
-                });
-
-
-            }
-        }
-    );
-
-
-/*
 // Работа с input
 var td = document.querySelectorAll('td');
-
 
 
 for (var i = 0; ; i++) {
