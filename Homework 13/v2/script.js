@@ -8,8 +8,6 @@ add.addEventListener('click', function addRow2() {
     );
 });
 
-var input;
-
 document.getElementById('myTable')
     .addEventListener('click', function (event) {
             if (event.target.tagName == 'TD' && event.target.className !== 'addBlock') {
