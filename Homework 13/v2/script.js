@@ -13,7 +13,6 @@ document.getElementById('myTable')
             if (event.target.tagName == 'TD' && event.target.className !== 'addBlock') {
                 // Фокус
                 var input = document.createElement('input');
-                event.target.appendChild(input);
                 input.value = event.target.textContent;
                 event.target.textContent = '';
                 event.target.appendChild(input);
