@@ -1,24 +1,22 @@
-var button = document.getElementById('button');
-
+var button = document.getElementById('button'),
+    x,
+    y;
 
 //Валидация
 document.getElementById('block').addEventListener('keyup', function () {
-    var x = document.getElementById('x').value,
+        x = document.getElementById('x').value,
         y = document.getElementById('y').value;
 
     if ((x > 0) && (y > 0)) {
         button.removeAttribute('disabled');
-    }
-    else if ((typeof (x) !== 'number') || (typeof (y) !== 'number')){
+    } else if ((typeof (x) !== 'number') || (typeof (y) !== 'number')) {
         button.setAttribute("disabled", "disabled");
     }
 });
 
 //Добовление таблицы и alert
 button.addEventListener('click', function () {
-    var x = document.getElementById('x').value,
-        y = document.getElementById('y').value;
-    if ((x > 10) || (y >10)){
+    if ((x > 10) || (y > 10)) {
         alert('Мы поддерживам любыче числа, но в задаче ограничение до 10 (: ')
         return;
     };
