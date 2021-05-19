@@ -1,9 +1,10 @@
-var button = document.getElementById('button'),
-    x = document.getElementById('x').value,
-    y = document.getElementById('y').value;
+var button = document.getElementById('button');
+
 
 //Валидация
-document.getElementById('block').addEventListener('keyup', function (x,y) {
+document.getElementById('block').addEventListener('keyup', function () {
+    var x = document.getElementById('x').value,
+        y = document.getElementById('y').value;
 
     if ((x > 0) && (y > 0)) {
         button.removeAttribute('disabled');
@@ -11,18 +12,20 @@ document.getElementById('block').addEventListener('keyup', function (x,y) {
 });
 
 //Добовление таблицы и alert
-button.addEventListener('click', function (x,y) {
-     if ((x > 10) || (y >10)){
-            alert('Мы поддерживам любыче числа, но в задаче ограничение до 10 (: ')
-         return;
-        };
+button.addEventListener('click', function () {
+    var x = document.getElementById('x').value,
+        y = document.getElementById('y').value;
+    if ((x > 10) || (y >10)){
+        alert('Мы поддерживам любыче числа, но в задаче ограничение до 10 (: ')
+        return;
+    };
 
     var t = document.getElementById('tbody');
 
     while (t.firstChild) {
         t.removeChild(t.firstChild);
     }
-    
+
     for (var i = 0; i < y; i++) {
         var newTr = document.createElement('TR');
         t.appendChild(newTr);
