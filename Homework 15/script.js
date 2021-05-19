@@ -1,9 +1,9 @@
-var button = document.getElementById('button');
+var button = document.getElementById('button'),
+    x = document.getElementById('x').value,
+    y = document.getElementById('y').value;
 
 //Валидация
-document.getElementById('block').addEventListener('keyup', function () {
-    var x = document.getElementById('x').value,
-        y = document.getElementById('y').value;
+document.getElementById('block').addEventListener('keyup', function (x,y) {
 
     if ((x > 0) && (y > 0)) {
         button.removeAttribute('disabled');
@@ -11,10 +11,7 @@ document.getElementById('block').addEventListener('keyup', function () {
 });
 
 //Добовление таблицы и alert
-button.addEventListener('click', function () {
-    var x = document.getElementById('x').value,
-        y = document.getElementById('y').value;
-
+button.addEventListener('click', function (x,y) {
      if ((x > 10) || (y >10)){
             alert('Мы поддерживам любыче числа, но в задаче ограничение до 10 (: ')
          return;
