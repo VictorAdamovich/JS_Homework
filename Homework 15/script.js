@@ -9,6 +9,9 @@ document.getElementById('block').addEventListener('keyup', function () {
     if ((x > 0) && (y > 0)) {
         button.removeAttribute('disabled');
     }
+    else if ((typeof (x) !== 'number') || (typeof (y) !== 'number')){
+        button.setAttribute("disabled", "disabled");
+    }
 });
 
 //Добовление таблицы и alert
