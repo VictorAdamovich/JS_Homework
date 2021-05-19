@@ -25,6 +25,7 @@ button.addEventListener('click', function () {
     while (t.firstChild) {
         t.removeChild(t.firstChild);
     }
+    
     for (var i = 0; i < y; i++) {
         var newTr = document.createElement('TR');
         t.appendChild(newTr);
