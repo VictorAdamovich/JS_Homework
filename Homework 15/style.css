@@ -10,17 +10,17 @@ td {
     text-align: center;
 }
 
-.odd tr:nth-child(odd) td:nth-child(odd) {
+.even tr:nth-child(odd) td:nth-child(odd) {
     background: black;
 }
-.odd tr:nth-child(even) td:nth-child(even) {
-    background: black;
-}
-
-
 .even tr:nth-child(even) td:nth-child(even) {
     background: black;
 }
-.even .hard tr:nth-child(odd) td:nth-child(odd) {
+
+.odd tr:nth-child(even) td:nth-child(odd) {
     background: black;
 }
+.odd tr:nth-child(odd) td:nth-child(even) {
+    background: black;
+}
+

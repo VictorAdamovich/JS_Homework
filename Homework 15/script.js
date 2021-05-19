@@ -39,6 +39,14 @@ button.addEventListener('click', function () {
 var tgl = document.getElementById('table');
 
 tgl.addEventListener('click', function () {
-        tgl.classList.toggle('odd')
-
-})
+        if (tgl.className == 'even') {
+            tgl.classList.remove('even')
+            tgl.classList.add('odd')
+            return
+        } else {
+            tgl.classList.remove('odd');
+            tgl.classList.add('even');
+            return
+        }
+    }
+)
