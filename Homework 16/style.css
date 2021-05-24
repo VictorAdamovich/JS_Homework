@@ -14,19 +14,12 @@ body{
 
 #user_info{
     display: flex;
-    justify-content: space-around;
     border: 1px solid gray;
     border-radius: 0 5px 5px 5px;
     padding: 30px;
     max-width: 900px;
 }
 
-#user_info img{
-    display: block;
-}
-.user__profile:hover{
-    background-color: #646d81;
-}
 .active{
-    background-color: #2d313d;
+    background-color: #99a1b3;
 }

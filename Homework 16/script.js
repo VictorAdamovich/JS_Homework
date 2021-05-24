@@ -75,10 +75,17 @@ document.getElementById('button').addEventListener('click', function () {
                 email.textContent = 'Email: ' + addProfileInfo.email;
                 secondBlock.appendChild(email);
             }
-        }
-        else {
-            document.body.innerHTML = 'FAILD: ' + this.status;
 
+            //Подсветка активной вкладки
+            document.getElementById('navi').addEventListener('click', function (e) {
+                var highlightNavi = document.getElementsByClassName('navi__user');
+                for (var i = 0; i < highlightNavi.length; i++) {
+                    highlightNavi[i].classList.remove('active');
+                }
+                e.target.classList.add('active');
+            })
+        } else {
+            document.body.innerHTML = 'FAILD: ' + this.status;
         }
     }
 })
