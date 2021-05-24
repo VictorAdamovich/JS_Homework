@@ -34,18 +34,26 @@ document.getElementById('button').addEventListener('click', function sendXhr() {
                     navi.appendChild(profile);
                 }
             }
-            //Передача данных в карточку по клику
+            //Передача данных в карточку по клику и добавление
             document.getElementById('navi').addEventListener('click', function (e) {
                 if (e.target.className === 'user__profile') {
-                    var userId = e.target.id;
-                    var deleteId = document.getElementById('user_info');
+                    var userId = e.target.id,
+                        deleteId = document.getElementById('user_info');
+
                     while (deleteId.firstChild) {
                         deleteId.removeChild(deleteId.firstChild);
                     }
-                    var user = arr[userId];
+                    user = arr[userId];
                     createProfileCar(user);
                 }
             });
+
+            document.getElementById('navi').addEventListener('click',function (e){
+                if (e.target.className === 'user__profile') {
+                    var active = e.target
+                    active.classList.add('active');
+                }
+            })
 
             //Наполнение карточки
             function createProfileCar(e) {

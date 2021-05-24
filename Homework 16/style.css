@@ -24,7 +24,9 @@ body{
 #user_info img{
     display: block;
 }
-
+.user__profile:hover{
+    background-color: #646d81;
+}
 .active{
-    background-color: gray;
+    background-color: #2d313d;
 }
