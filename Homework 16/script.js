@@ -6,19 +6,24 @@ document.getElementById('button').addEventListener('click', function sendXhr() {
     xhr.open("GET", "https://reqres.in/api/users?page=2", true);
     xhr.send();
     xhr.onload = function () {
-        localStorage.users= xhr
-
+        localStorage.users = xhr
         xhr = JSON.parse(xhr.responseText)
         arr = xhr.data
-        createNavi()
-        createProfileCar()
+        var container = document.getElementById('container')
+        var createUserInfo = document.createElement('div');
+        createUserInfo.id = 'user_info';
+        container.appendChild(createUserInfo);
+        createNavi();
+        createProfileCar(arr[0]);
     };
 })
 
-document.getElementById('navi').addEventListener('click',function (event){
-    if(event.target.className == 'user__profile' ){
+document.getElementById('navi').addEventListener('click', function (event) {
+    if (event.target.className == 'user__profile') {
         var user = event.target.id
         var test = arr[user]
+
+
         var t = document.getElementById('user_info')
         while (t.firstChild) {
             t.removeChild(t.firstChild);
@@ -26,6 +31,7 @@ document.getElementById('navi').addEventListener('click',function (event){
         createProfileCar(test)
     }
 })
+
 
 //Создание блоков Navi
 function createNavi() {
@@ -39,8 +45,11 @@ function createNavi() {
     }
 }
 
+
 //Создание карточки
 function createProfileCar(test) {
+
+
     var test2 = test
     var userInfo = document.getElementById('user_info')
 
@@ -51,11 +60,11 @@ function createProfileCar(test) {
 
     //Add First name
     var firstName = document.createElement('P');
-    firstName.textContent = 'FirstName: ' +test2.first_name
+    firstName.textContent = 'FirstName: ' + test2.first_name
     userInfo.appendChild(firstName);
     //Add Last name
     var lastName = document.createElement('P');
-    lastName.textContent = 'FirstName: ' +test2.last_name
+    lastName.textContent = 'FirstName: ' + test2.last_name
     userInfo.appendChild(lastName);
 
     //Add email
@@ -63,6 +72,8 @@ function createProfileCar(test) {
     email.textContent = 'Email: ' + test2.email
     userInfo.appendChild(email);
 }
+
+
 
 
 
