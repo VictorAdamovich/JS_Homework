@@ -6,15 +6,21 @@ document.getElementById('button').addEventListener('click', function sendXhr() {
     xhr.open("GET", "https://reqres.in/api/users?page=2", true);
     xhr.send();
     xhr.onload = function () {
-        localStorage.users = xhr
-        xhr = JSON.parse(xhr.responseText)
-        arr = xhr.data
-        var container = document.getElementById('container')
-        var createUserInfo = document.createElement('div');
-        createUserInfo.id = 'user_info';
-        container.appendChild(createUserInfo);
-        createNavi();
-        createProfileCar(arr[0]);
+        var statusType = Math.round(this.status / 100);
+        if(statusType === 2 || statusType === 3) {
+            localStorage.users = xhr
+            xhr = JSON.parse(xhr.responseText)
+            arr = xhr.data
+            var container = document.getElementById('container')
+            var createUserInfo = document.createElement('div');
+            createUserInfo.id = 'user_info';
+            container.appendChild(createUserInfo);
+            createNavi();
+            createProfileCar(arr[0]);
+        }
+        else {
+            alert('Нужно сделать, нормально');
+        }
     };
 })
 
@@ -22,8 +28,6 @@ document.getElementById('navi').addEventListener('click', function (event) {
     if (event.target.className == 'user__profile') {
         var user = event.target.id
         var test = arr[user]
-
-
         var t = document.getElementById('user_info')
         while (t.firstChild) {
             t.removeChild(t.firstChild);
@@ -32,9 +36,9 @@ document.getElementById('navi').addEventListener('click', function (event) {
     }
 })
 
-
 //Создание блоков Navi
 function createNavi() {
+
     var navi = document.getElementById('navi');
     for (var i = 0; i < arr.length; i++) {
         var profile = document.createElement('DIV')
@@ -48,8 +52,6 @@ function createNavi() {
 
 //Создание карточки
 function createProfileCar(test) {
-
-
     var test2 = test
     var userInfo = document.getElementById('user_info')
 
@@ -72,6 +74,7 @@ function createProfileCar(test) {
     email.textContent = 'Email: ' + test2.email
     userInfo.appendChild(email);
 }
+
 
 
 

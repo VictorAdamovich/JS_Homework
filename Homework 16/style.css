@@ -16,8 +16,13 @@ body{
     border: 1px solid gray;
     border-radius: 0px 5px 5px 5px;
     padding: 30px;
+    max-width: 900px;
 }
 
 #user_info img{
     display: block;
+}
+
+.active{
+    background-color: gray;
 }
