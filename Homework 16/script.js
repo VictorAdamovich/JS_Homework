@@ -1,6 +1,6 @@
-var xhr = new XMLHttpRequest();
-var arr;
-var container = document.getElementById('container');
+var xhr = new XMLHttpRequest(),
+    arr,
+    container = document.getElementById('container');
 
 //Получение JSON
 document.getElementById('button').addEventListener('click', function sendXhr() {
@@ -34,7 +34,7 @@ document.getElementById('button').addEventListener('click', function sendXhr() {
                     navi.appendChild(profile);
                 }
             }
-
+            //Передача данных в карточку по клику
             document.getElementById('navi').addEventListener('click', function (e) {
                 if (e.target.className === 'user__profile') {
                     var userId = e.target.id;
@@ -49,10 +49,11 @@ document.getElementById('button').addEventListener('click', function sendXhr() {
 
             //Наполнение карточки
             function createProfileCar(e) {
-                var addProfileInfo = e;
-                var userInfo = document.getElementById('user_info');
-                var firsBlock = document.createElement('div'),
+                var addProfileInfo = e,
+                    userInfo = document.getElementById('user_info'),
+                    firsBlock = document.createElement('div'),
                     secondBlock = document.createElement('div');
+
                 userInfo.appendChild(firsBlock);
                 userInfo.appendChild(secondBlock);
 
