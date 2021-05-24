@@ -1,61 +1,52 @@
-var xhr = new XMLHttpRequest(),
-    arr,
-    container = document.getElementById('container');
+document.getElementById('button').addEventListener('click', function () {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'https://reqres.in/api/users?page=2');
 
-//Получение JSON
-document.getElementById('button').addEventListener('click', function sendXhr() {
-    xhr.open('GET', 'https://reqres.in/api/users?page=2', true);
     xhr.send();
     xhr.onload = function () {
         var status = +String(this.status)[0];
         if (status === 2) {
-            xhr = JSON.parse(xhr.responseText);
-            arr = xhr.data;
-            //Создание блока навигации
+            var userInfo = JSON.parse(xhr.responseText).data;
+
+            //Создаём блок навигации
             var createNavi = document.createElement('div');
             createNavi.id = 'navi';
             container.appendChild(createNavi);
 
-            //Создание блока карточки
+            //Наполняем блок Navi
+            function createNaviFunc(e) {
+                for (var i = 0; i < e; i++) {
+                    var a = document.createElement('div');
+                    a.className = 'navi__user';
+                    a.id = i;
+                    a.innerHTML = 'Пользователь ' + (i + 1);
+                    createNavi.append(a);
+                }
+            }
+
+            createNaviFunc(userInfo.length);
+
+            //Создаём карточку
             var createUserInfo = document.createElement('div');
             createUserInfo.id = 'user_info';
             container.appendChild(createUserInfo);
-            createNaviInfo();
-            createProfileCar(arr[0]);
 
-            //Создание блоков Navi
-            function createNaviInfo() {
-                var navi = document.getElementById('navi');
-                for (var i = 0; i < arr.length; i++) {
-                    var profile = document.createElement('DIV');
-                    profile.id = i;
-                    profile.className = 'user__profile';
-                    profile.innerHTML = 'Пользователь ' + i;
-                    navi.appendChild(profile);
-                }
-            }
-            //Передача данных в карточку по клику и добавление
+            //Наполняем карточку по клику
             document.getElementById('navi').addEventListener('click', function (e) {
-                if (e.target.className === 'user__profile') {
+
+                if (e.target.className === 'navi__user') {
                     var userId = e.target.id,
                         deleteId = document.getElementById('user_info');
 
                     while (deleteId.firstChild) {
                         deleteId.removeChild(deleteId.firstChild);
                     }
-                    user = arr[userId];
+                    var user = userInfo[userId];
                     createProfileCar(user);
                 }
-            });
-
-            document.getElementById('navi').addEventListener('click',function (e){
-                if (e.target.className === 'user__profile') {
-                    var active = e.target
-                    active.classList.add('active');
-                }
             })
+            createProfileCar(userInfo[0]);
 
-            //Наполнение карточки
             function createProfileCar(e) {
                 var addProfileInfo = e,
                     userInfo = document.getElementById('user_info'),
@@ -84,8 +75,10 @@ document.getElementById('button').addEventListener('click', function sendXhr() {
                 email.textContent = 'Email: ' + addProfileInfo.email;
                 secondBlock.appendChild(email);
             }
-        } else {
-            container.insertAdjacentHTML('afterend', '<h1>Опа, ошибочка вышла</h1>');
         }
-    };
-});
+        else {
+            document.body.innerHTML = 'FAILD: ' + this.status;
+
+        }
+    }
+})
