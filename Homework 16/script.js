@@ -4,18 +4,17 @@ var container = document.getElementById('container')
 
 //Получение JSON
 document.getElementById('button').addEventListener('click', function sendXhr() {
-    xhr.open("GET", "https://reqres.in/api/users?page=2", true);
+    xhr.open('GET', 'https://reqres.in/api/users?page=2', true);
     xhr.send();
     xhr.onload = function () {
         var status = +String(this.status)[0];
-        if(status ===  2) {
+        if (status === 2) {
             xhr = JSON.parse(xhr.responseText)
             arr = xhr.data
             //Создание блока навигации
             var createNavi = document.createElement('div');
             createNavi.id = 'navi';
             container.appendChild(createNavi)
-
 
             //Создание блока карточки
             var createUserInfo = document.createElement('div');
@@ -38,11 +37,11 @@ document.getElementById('button').addEventListener('click', function sendXhr() {
             }
 
 
-            document.getElementById('navi').addEventListener('click',function (e){
-                if (e.target.className === 'user__profile'){
+            document.getElementById('navi').addEventListener('click', function (e) {
+                if (e.target.className === 'user__profile') {
                     var userId = e.target.id;
                     var deleteId = document.getElementById('user_info')
-                    while (deleteId.firstChild){
+                    while (deleteId.firstChild) {
                         deleteId.removeChild(deleteId.firstChild);
                     }
                     var user = arr[userId];
@@ -80,9 +79,8 @@ document.getElementById('button').addEventListener('click', function sendXhr() {
                 secondBlock.appendChild(email);
             }
 
-        }
-        else {
-            document.body.innerHTML = 'FAILD: ' + this.status;
+        } else {
+            container.insertAdjacentHTML('afterend', '<h1>Опа, ошибочка вышла</h1>');
         }
     };
 })
