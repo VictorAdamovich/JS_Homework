@@ -8,7 +8,6 @@ document.getElementById('button').addEventListener('click', function sendXhr() {
     xhr.onload = function () {
         var statusType = Math.round(this.status / 100);
         if(statusType === 2 || statusType === 3) {
-            localStorage.users = xhr
             xhr = JSON.parse(xhr.responseText)
             arr = xhr.data
             var container = document.getElementById('container')
@@ -25,8 +24,10 @@ document.getElementById('button').addEventListener('click', function sendXhr() {
 })
 
 document.getElementById('navi').addEventListener('click', function (event) {
-    if (event.target.className == 'user__profile') {
+    if (event.target.className === 'user__profile') {
         var user = event.target.id
+        var active = event.target
+        active.classList.add('active')
         var test = arr[user]
         var t = document.getElementById('user_info')
         while (t.firstChild) {
@@ -38,7 +39,6 @@ document.getElementById('navi').addEventListener('click', function (event) {
 
 //Создание блоков Navi
 function createNavi() {
-
     var navi = document.getElementById('navi');
     for (var i = 0; i < arr.length; i++) {
         var profile = document.createElement('DIV')
