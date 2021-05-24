@@ -1,5 +1,6 @@
 var xhr = new XMLHttpRequest();
 var arr;
+var container = document.getElementById('container')
 
 //Получение JSON
 document.getElementById('button').addEventListener('click', function sendXhr() {
@@ -10,69 +11,82 @@ document.getElementById('button').addEventListener('click', function sendXhr() {
         if(status ===  2) {
             xhr = JSON.parse(xhr.responseText)
             arr = xhr.data
-            var container = document.getElementById('container')
+            //Создание блока навигации
+            var createNavi = document.createElement('div');
+            createNavi.id = 'navi';
+            container.appendChild(createNavi)
+
+
+            //Создание блока карточки
             var createUserInfo = document.createElement('div');
             createUserInfo.id = 'user_info';
             container.appendChild(createUserInfo);
-            createNavi();
+            createNaviInfo();
             createProfileCar(arr[0]);
+
+
+            //Создание блоков Navi
+            function createNaviInfo() {
+                var navi = document.getElementById('navi');
+                for (var i = 0; i < arr.length; i++) {
+                    var profile = document.createElement('DIV')
+                    profile.id = i;
+                    profile.className = 'user__profile'
+                    profile.innerHTML = 'Пользователь ' + i;
+                    navi.appendChild(profile)
+                }
+            }
+
+
+            document.getElementById('navi').addEventListener('click',function (e){
+                if (e.target.className === 'user__profile'){
+                    var userId = e.target.id;
+                    var deleteId = document.getElementById('user_info')
+                    while (deleteId.firstChild){
+                        deleteId.removeChild(deleteId.firstChild);
+                    }
+                    var user = arr[userId];
+                    createProfileCar(user)
+                }
+            })
+
+//Наполнение карточки
+            function createProfileCar(e) {
+                var addProfileInfo = e
+                var userInfo = document.getElementById('user_info')
+                var firsBlock = document.createElement('div'),
+                    secondBlock = document.createElement('div');
+                userInfo.appendChild(firsBlock);
+                userInfo.appendChild(secondBlock);
+
+
+                //Add img
+                var img = document.createElement("IMG");
+                img.src = addProfileInfo.avatar;
+                firsBlock.appendChild(img);
+
+                //Add First name
+                var firstName = document.createElement('P');
+                firstName.textContent = 'FirstName: ' + addProfileInfo.first_name
+                secondBlock.appendChild(firstName);
+                //Add Last name
+                var lastName = document.createElement('P');
+                lastName.textContent = 'FirstName: ' + addProfileInfo.last_name
+                secondBlock.appendChild(lastName);
+
+                //Add email
+                var email = document.createElement('P')
+                email.textContent = 'Email: ' + addProfileInfo.email
+                secondBlock.appendChild(email);
+            }
+
         }
         else {
+            document.body.innerHTML = 'FAILD: ' + this.status;
         }
     };
 })
 
-document.getElementById('navi').addEventListener('click', function (event) {
-    var status = +String(this.status)[0];
-    if (event.target.className === 'user__profile') {
-        var user = event.target.id
-        var active = event.target
-        var t = document.getElementById('user_info')
-        active.classList.add('active')
-        var test = arr[user]
-        while (t.firstChild) {
-            t.removeChild(t.firstChild);
-        }
-        createProfileCar(test)
-    }
-})
-
-//Создание блоков Navi
-function createNavi() {
-    var navi = document.getElementById('navi');
-    for (var i = 0; i < arr.length; i++) {
-        var profile = document.createElement('DIV')
-        profile.id = i;
-        profile.className = 'user__profile'
-        profile.innerHTML = 'Пользователь ' + i;
-        navi.appendChild(profile)
-    }
-}
-
-//Создание карточки и navi
-function createProfileCar(e) {
-    var addProfileInfo = e
-    var userInfo = document.getElementById('user_info')
-
-    //Add img
-    var img = document.createElement("IMG");
-    img.src = addProfileInfo.avatar;
-    userInfo.appendChild(img);
-
-    //Add First name
-    var firstName = document.createElement('P');
-    firstName.textContent = 'FirstName: ' + addProfileInfo.first_name
-    userInfo.appendChild(firstName);
-    //Add Last name
-    var lastName = document.createElement('P');
-    lastName.textContent = 'FirstName: ' + addProfileInfo.last_name
-    userInfo.appendChild(lastName);
-
-    //Add email
-    var email = document.createElement('P')
-    email.textContent = 'Email: ' + addProfileInfo.email
-    userInfo.appendChild(email);
-}
 
 
 
