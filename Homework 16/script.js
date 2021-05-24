@@ -6,8 +6,8 @@ document.getElementById('button').addEventListener('click', function sendXhr() {
     xhr.open("GET", "https://reqres.in/api/users?page=2", true);
     xhr.send();
     xhr.onload = function () {
-        var statusType = Math.round(this.status / 100);
-        if(statusType === 2 || statusType === 3) {
+        var status = +String(this.status)[0];
+        if(status ===  2) {
             xhr = JSON.parse(xhr.responseText)
             arr = xhr.data
             var container = document.getElementById('container')
@@ -18,18 +18,18 @@ document.getElementById('button').addEventListener('click', function sendXhr() {
             createProfileCar(arr[0]);
         }
         else {
-            alert('Нужно сделать, нормально');
         }
     };
 })
 
 document.getElementById('navi').addEventListener('click', function (event) {
+    var status = +String(this.status)[0];
     if (event.target.className === 'user__profile') {
         var user = event.target.id
         var active = event.target
+        var t = document.getElementById('user_info')
         active.classList.add('active')
         var test = arr[user]
-        var t = document.getElementById('user_info')
         while (t.firstChild) {
             t.removeChild(t.firstChild);
         }
@@ -49,29 +49,28 @@ function createNavi() {
     }
 }
 
-
-//Создание карточки
-function createProfileCar(test) {
-    var test2 = test
+//Создание карточки и navi
+function createProfileCar(e) {
+    var addProfileInfo = e
     var userInfo = document.getElementById('user_info')
 
     //Add img
     var img = document.createElement("IMG");
-    img.src = test2.avatar;
+    img.src = addProfileInfo.avatar;
     userInfo.appendChild(img);
 
     //Add First name
     var firstName = document.createElement('P');
-    firstName.textContent = 'FirstName: ' + test2.first_name
+    firstName.textContent = 'FirstName: ' + addProfileInfo.first_name
     userInfo.appendChild(firstName);
     //Add Last name
     var lastName = document.createElement('P');
-    lastName.textContent = 'FirstName: ' + test2.last_name
+    lastName.textContent = 'FirstName: ' + addProfileInfo.last_name
     userInfo.appendChild(lastName);
 
     //Add email
     var email = document.createElement('P')
-    email.textContent = 'Email: ' + test2.email
+    email.textContent = 'Email: ' + addProfileInfo.email
     userInfo.appendChild(email);
 }
 
