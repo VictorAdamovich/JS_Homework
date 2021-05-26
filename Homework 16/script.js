@@ -3,6 +3,12 @@ document.getElementById('button').addEventListener('click', function () {
     xhr.open('GET', 'https://reqres.in/api/users?page=2');
 
     xhr.send();
+    //Очистка при клике на button
+    var cont = document.getElementById('container');
+    while (cont.firstChild) {
+        cont.removeChild(cont.firstChild);
+    };
+
     xhr.onload = function () {
         var status = +String(this.status)[0];
         if (status === 2) {
