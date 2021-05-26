@@ -26,6 +26,8 @@ document.getElementById('button').addEventListener('click', function () {
 
             createNaviFunc(userInfo.length);
 
+            document.getElementById(0).classList.add('active');
+
             //Создаём карточку
             var createUserInfo = document.createElement('div');
             createUserInfo.id = 'user_info';
@@ -67,7 +69,7 @@ document.getElementById('button').addEventListener('click', function () {
                 secondBlock.appendChild(firstName);
                 //Add Last name
                 var lastName = document.createElement('P');
-                lastName.textContent = 'FirstName: ' + addProfileInfo.last_name;
+                lastName.textContent = 'LastName: ' + addProfileInfo.last_name;
                 secondBlock.appendChild(lastName);
 
                 //Add email
