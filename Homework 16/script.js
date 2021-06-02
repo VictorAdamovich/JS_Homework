@@ -5,9 +5,8 @@ document.getElementById('button').addEventListener('click', function () {
     xhr.send();
     //Очистка при клике на button
     var cont = document.getElementById('container');
-    while (cont.firstChild) {
-        cont.removeChild(cont.firstChild);
-    };
+
+    cont.innerHTML = '';
 
     xhr.onload = function () {
         var status = +String(this.status)[0];
@@ -41,14 +40,12 @@ document.getElementById('button').addEventListener('click', function () {
 
             //Наполняем карточку по клику
             document.getElementById('navi').addEventListener('click', function (e) {
-
                 if (e.target.className === 'navi__user') {
                     var userId = e.target.id,
                         deleteId = document.getElementById('user_info');
 
-                    while (deleteId.firstChild) {
-                        deleteId.removeChild(deleteId.firstChild);
-                    }
+                    deleteId.innerHTML = '';
+
                     var user = userInfo[userId];
                     createProfileCar(user);
                 }
